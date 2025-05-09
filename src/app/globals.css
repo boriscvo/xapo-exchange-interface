@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-*: initial;
+  --color-primary: #c34813;
+  --color-dark: #090402;
+  --color-positive: #21c313;
+  --color-negative: #c31313;
+  --color-sectionDark: #090402;
+  --color-white: #ffffff;
+  --color-softWhite: #c2c2c2;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
