@@ -14,7 +14,7 @@ export default function Home() {
           decimals={2}
           trailSymbol="USD"
         />
-        <BuyOrSell />
+        <BuyOrSell btcRate="34535.24" />
       </TradeLayout>
     </Container>
   )
