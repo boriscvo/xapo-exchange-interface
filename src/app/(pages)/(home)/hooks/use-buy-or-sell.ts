@@ -1,7 +1,7 @@
-import { useState } from "react"
 import { getCleanNumber } from "@/app/utils/get-clean-number"
 import { getFormattedValue } from "@/app/utils/get-formatted-number"
 import { useTradeStates } from "./use-trade-states"
+import useGlobalStore from "@/app/store/use-global-store"
 
 export function useBuyOrSell(btcRate: string) {
   const {
@@ -13,26 +13,30 @@ export function useBuyOrSell(btcRate: string) {
     handleTypeChange,
   } = useTradeStates()
 
-  const [payMoneyValue, setPayMoneyValue] = useState<string>("")
-  const [receiveCoinValue, setReceiveCoinValue] = useState<string>("")
+  const amountInCurrency = useGlobalStore((state) => state.amountInCurrency)
+  const amountInBtc = useGlobalStore((state) => state.amountInBtc)
+  const setAmountInCurrency = useGlobalStore(
+    (state) => state.setAmountInCurrency
+  )
+  const setAmountInBtc = useGlobalStore((state) => state.setAmountInBtc)
 
   const handleStateUpdates = (value?: string) => {
     if (value === undefined) {
-      setPayMoneyValue("")
-      setReceiveCoinValue("")
+      setAmountInCurrency("")
+      setAmountInBtc("")
       return
     }
     if (activeType === "in-currency") {
       const convertedBtc = (getCleanNumber(value) / Number(btcRate)).toFixed(5)
-      setPayMoneyValue(getFormattedValue(value))
-      setReceiveCoinValue(getFormattedValue(convertedBtc))
+      setAmountInCurrency(getFormattedValue(value))
+      setAmountInBtc(getFormattedValue(convertedBtc))
       return
     }
     const convertedCurrency = (getCleanNumber(value) * Number(btcRate)).toFixed(
       2
     )
-    setPayMoneyValue(getFormattedValue(convertedCurrency))
-    setReceiveCoinValue(value)
+    setAmountInCurrency(getFormattedValue(convertedCurrency))
+    setAmountInBtc(value)
   }
 
   const handlePayUpdates = (inputValue: string) => {
@@ -55,8 +59,8 @@ export function useBuyOrSell(btcRate: string) {
     activeType,
     optionBuy,
     optionSell,
-    payMoneyValue,
-    receiveCoinValue,
+    amountInCurrency,
+    amountInBtc,
     handleStateChange,
     handleTypeChange,
     handlePayUpdates,

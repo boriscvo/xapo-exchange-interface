@@ -1,21 +1,26 @@
 "use client"
+import useGlobalStore from "@/app/store/use-global-store"
 import { Switch } from "@/app/atoms/switch"
 import { useBuyOrSell } from "../hooks/use-buy-or-sell"
-import { ActivePurchaseState } from "../types"
 import { Input } from "@/app/atoms/input"
+import { Button } from "@/app/atoms/button"
+import { ActivePurchaseState } from "@/app/types/trade-flow"
 
 type Props = {
   btcRate: string
 }
 
 export function BuyOrSell({ btcRate }: Props) {
+  const handleConfirmationOpen = useGlobalStore(
+    (state) => state.setConfirmationOpen
+  )
   const {
     activeState,
     activeType,
     optionBuy,
     optionSell,
-    payMoneyValue,
-    receiveCoinValue,
+    amountInCurrency,
+    amountInBtc,
     handleStateChange,
     handlePayUpdates,
   } = useBuyOrSell(btcRate)
@@ -32,7 +37,7 @@ export function BuyOrSell({ btcRate }: Props) {
       <div className="flex mt-4">
         <span className="mr-4">You pay:</span>
         <Input
-          value={payMoneyValue}
+          value={amountInCurrency}
           onChange={handlePayUpdates}
           isDisabled={activeType === "in-btc"}
         />
@@ -41,12 +46,15 @@ export function BuyOrSell({ btcRate }: Props) {
       <div className="flex mt-4">
         <span className="mr-4">You get:</span>
         <Input
-          value={receiveCoinValue}
+          value={amountInBtc}
           onChange={handlePayUpdates}
           isDisabled={activeType === "in-currency"}
         />
         <span className="ml-2">BTC</span>
       </div>
+      <Button variant="primary" onClick={handleConfirmationOpen}>
+        Proceed
+      </Button>
     </div>
   )
 }

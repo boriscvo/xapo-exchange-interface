@@ -4,13 +4,21 @@ import { ButtonType } from "./types"
 
 export function Button({
   variant,
+  customClass,
   icon,
   children,
   isDisabled,
+  isAutoFocused,
   onClick,
 }: ButtonType) {
   return (
-    <Container variant={variant} isDisabled={isDisabled} onClick={onClick}>
+    <Container
+      customClass={customClass}
+      variant={variant}
+      isDisabled={isDisabled}
+      onClick={onClick}
+      isAutoFocused={isAutoFocused}
+    >
       {icon}
       {children}
     </Container>

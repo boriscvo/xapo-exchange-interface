@@ -1,17 +1,18 @@
-import { useState } from "react"
-import { ActivePurchaseState, ActivePurchaseType } from "../types"
+import useGlobalStore from "@/app/store/use-global-store"
+import { ActivePurchaseState, ActivePurchaseType } from "@/app/types/trade-flow"
 
 export function useTradeStates() {
-  const [activeState, setActiveState] = useState<ActivePurchaseState>("buy")
-  const [activeType, setActiveType] =
-    useState<ActivePurchaseType>("in-currency")
+  const tradeState = useGlobalStore((state) => state.tradeState)
+  const tradeType = useGlobalStore((state) => state.tradeType)
+  const setTradeState = useGlobalStore((state) => state.setTradeState)
+  const setTradeType = useGlobalStore((state) => state.setTradeType)
 
   const handleStateChange = (value: ActivePurchaseState) => {
-    setActiveState(value)
+    setTradeState(value)
   }
 
   const handleTypeChange = (value: ActivePurchaseType) => {
-    setActiveType(value)
+    setTradeType(value)
   }
 
   const optionBuy = {
@@ -25,8 +26,8 @@ export function useTradeStates() {
   }
 
   return {
-    activeState,
-    activeType,
+    activeState: tradeState,
+    activeType: tradeType,
     optionBuy,
     optionSell,
     handleStateChange,
