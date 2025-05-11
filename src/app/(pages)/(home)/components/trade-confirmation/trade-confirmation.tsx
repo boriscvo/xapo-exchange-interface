@@ -12,6 +12,8 @@ export function TradeConfirmation() {
       content={<Description />}
       handleClose={handleConfirmationClose}
       handleConfirm={() => {}}
+      loadingText="Please wait until the transaction is placed..."
+      successText="Transaction placed successfully!"
     />
   )
 }

@@ -1,14 +1,30 @@
 import { ActionStatus } from "@/app/types/action-status"
-import { Loading } from "./loading"
+import { TransitionState } from "./transition-state"
 
 type Props = {
-  actionStatus: ActionStatus
+  actionStatus?: ActionStatus
+  successText?: string
+  loadingText?: string
+  handleClose: () => void
   children: React.ReactNode
 }
 
-export function DialogContent({ actionStatus, children }: Props) {
+export function DialogContent({
+  actionStatus,
+  successText,
+  loadingText,
+  handleClose,
+  children,
+}: Props) {
   if (actionStatus === "loading") {
-    return <Loading />
+    return (
+      <TransitionState
+        status={actionStatus}
+        loadingText={loadingText}
+        successText={successText}
+        handleClose={handleClose}
+      />
+    )
   }
-  return <>{children}</>
+  return <div className="flex flex-col">{children}</div>
 }

@@ -10,6 +10,8 @@ type Props = {
   content: React.ReactNode
   yesLabel?: string
   noLabel?: string
+  loadingText?: string
+  successText?: string
   handleClose: () => void
   handleConfirm: () => void
 }
@@ -20,6 +22,8 @@ export function Dialog({
   content,
   yesLabel,
   noLabel,
+  loadingText,
+  successText,
   handleClose,
   handleConfirm,
 }: Props) {
@@ -30,7 +34,11 @@ export function Dialog({
   return (
     <>
       <Container isMountingOn={isMountingOn}>
-        <DialogContent actionStatus="loading">
+        <DialogContent
+          loadingText={loadingText}
+          successText={successText}
+          handleClose={handleClose}
+        >
           <h2 className="text-xl text-center font-semibold mb-4">{title}</h2>
           <div className="mb-4">{content}</div>
           <div className="flex gap-x-2">

@@ -1,4 +1,3 @@
-import "../style.css"
 import { ButtonType } from "../types"
 
 type Props = Pick<
@@ -22,7 +21,7 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`default-button w-8 h-8 bg-softWhite p-1 text-center rounded-full shadow`}
+          className={`cursor-pointer w-8 h-8 bg-softWhite transition-all p-1 text-center rounded-full shadow`}
           onClick={onClick}
         >
           {children}
@@ -33,9 +32,9 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`default-button font-semibold text-sm bg-btnGray rounded-xl text-center${
+          className={`font-semibold text-sm bg-btnGray transition-all rounded-xl text-center${
             customClass ? ` ${customClass}` : ""
-          }`}
+          }${isDisabled ? " opacity-50 cursor-default" : " cursor-pointer"}`}
           onClick={onClick}
         >
           {children}
@@ -47,9 +46,9 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`default-button font-semibold text-sm text-white bg-primary rounded-lg text-center${
+          className={`font-semibold text-sm text-white bg-primary transition-all rounded-lg text-center${
             customClass ? ` ${customClass}` : ""
-          }`}
+          }${isDisabled ? " opacity-50 cursor-default" : " cursor-pointer"}`}
           onClick={onClick}
         >
           {children}

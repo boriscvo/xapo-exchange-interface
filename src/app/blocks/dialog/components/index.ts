@@ -1,3 +1,3 @@
 export { Container } from "./container"
 export { Background } from "./background"
-export { Loading } from "./loading"
+export { Loading } from "./transition-state"

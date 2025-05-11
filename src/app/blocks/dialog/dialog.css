@@ -1,0 +1,54 @@
+.rotating-loading {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-white) 0%,
+    var(--color-white) 35%,
+    var(--color-primary) 35%,
+    var(--color-primary) 65%,
+    var(--color-white) 65%,
+    var(--color-white) 100%
+  );
+  animation: spin 1.5s linear infinite;
+}
+
+.static-loading {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-white);
+}
+
+.checkmark-success {
+  position: absolute;
+  width: 2.25rem;
+  height: 1.25rem;
+  border-left: 0.6rem solid var(--color-primary);
+  border-bottom: 0.6rem solid var(--color-primary);
+  transform: rotate(-45deg);
+  left: calc(50% - 1.125rem);
+  top: calc(50% - 0.7rem);
+}
+
+.checkmark-success-visible {
+  animation: showCheckmark 0.3s ease-in-out 1s forwards;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes showCheckmark {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
