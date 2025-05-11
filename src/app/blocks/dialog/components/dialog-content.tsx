@@ -16,7 +16,7 @@ export function DialogContent({
   handleClose,
   children,
 }: Props) {
-  if (actionStatus === "loading") {
+  if (actionStatus === "loading" || actionStatus === "success") {
     return (
       <TransitionState
         status={actionStatus}

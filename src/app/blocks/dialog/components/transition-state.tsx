@@ -38,7 +38,7 @@ export function TransitionState({
         successText={successText}
       />
       <Button
-        isDisabled={status === "success"}
+        isDisabled={status === "loading"}
         customClass="w-full mt-auto h-10"
         variant="primary"
         onClick={handleClose}

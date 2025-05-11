@@ -1,6 +1,8 @@
+import "../globals.css"
 import type { Metadata } from "next"
 import { Poppins } from "next/font/google"
-import "./globals.css"
+import { MSW } from "../../libs/msw-wrapper"
+import { QueryProvider } from "../../libs/query-provider/query-provider"
 
 export const metadata: Metadata = {
   title: "XAPO Convertor",
@@ -18,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased ${poppins.className}`}>{children}</body>
+      <body className={`antialiased ${poppins.className}`}>
+        <QueryProvider>
+          <MSW />
+          {children}
+        </QueryProvider>
+      </body>
     </html>
   )
 }

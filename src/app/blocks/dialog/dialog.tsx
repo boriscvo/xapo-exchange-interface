@@ -1,8 +1,7 @@
 "use client"
-import { Button } from "@/app/atoms/button"
-import { Background, Container } from "./components"
+import { Background, Container, DialogContent, MainMessage } from "./components"
 import { useDialogVisibility } from "./hooks/use-dialog-visibility"
-import { DialogContent } from "./components/dialog-content"
+import { ActionStatus } from "@/app/types/action-status"
 
 type Props = {
   isOpen: boolean
@@ -12,6 +11,7 @@ type Props = {
   noLabel?: string
   loadingText?: string
   successText?: string
+  actionStatus?: ActionStatus
   handleClose: () => void
   handleConfirm: () => void
 }
@@ -24,6 +24,7 @@ export function Dialog({
   noLabel,
   loadingText,
   successText,
+  actionStatus,
   handleClose,
   handleConfirm,
 }: Props) {
@@ -35,29 +36,19 @@ export function Dialog({
     <>
       <Container isMountingOn={isMountingOn}>
         <DialogContent
+          actionStatus={actionStatus}
           loadingText={loadingText}
           successText={successText}
           handleClose={handleClose}
         >
-          <h2 className="text-xl text-center font-semibold mb-4">{title}</h2>
-          <div className="mb-4">{content}</div>
-          <div className="flex gap-x-2">
-            <Button
-              variant="secondary"
-              customClass="w-1/2 h-10"
-              onClick={handleClose}
-              isAutoFocused
-            >
-              {noLabel || "Cancel"}
-            </Button>
-            <Button
-              variant="primary"
-              customClass="w-1/2 h-10"
-              onClick={handleConfirm}
-            >
-              {yesLabel || "Confirm"}
-            </Button>
-          </div>
+          <MainMessage
+            title={title}
+            content={content}
+            yesLabel={yesLabel}
+            noLabel={noLabel}
+            handleClose={handleClose}
+            handleConfirm={handleConfirm}
+          />
         </DialogContent>
       </Container>
       <Background isMountingOn={isMountingOn} onClose={handleClose} />

@@ -1,3 +1,5 @@
 export { Container } from "./container"
 export { Background } from "./background"
-export { Loading } from "./transition-state"
+export { MainMessage } from "./main-message"
+export { TransitionState } from "./transition-state"
+export { DialogContent } from "./dialog-content"
