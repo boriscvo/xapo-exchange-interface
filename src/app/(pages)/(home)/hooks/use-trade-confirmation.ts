@@ -5,6 +5,10 @@ import { useMutation } from "@tanstack/react-query"
 export function useTradeConfirmation() {
   const isConfirmationOn = useGlobalStore((state) => state.isConfirmationOn)
   const amountInCurrency = useGlobalStore((state) => state.amountInCurrency)
+  const handleAmountInCurrency = useGlobalStore(
+    (state) => state.setAmountInCurrency
+  )
+  const handleAmountInBtc = useGlobalStore((state) => state.setAmountInBtc)
   const amountInBtc = useGlobalStore((state) => state.amountInBtc)
   const tradeType = useGlobalStore((state) => state.tradeType)
   const tradeState = useGlobalStore((state) => state.tradeState)
@@ -12,7 +16,11 @@ export function useTradeConfirmation() {
     (state) => state.setConfirmationClose
   )
 
-  const { status, mutate: handleConfirm } = useMutation({
+  const {
+    status,
+    mutate: handleConfirm,
+    reset,
+  } = useMutation({
     mutationFn: async () => {
       const response = await fetch("https://boris_example/transactions/", {
         method: "POST",
@@ -30,10 +38,19 @@ export function useTradeConfirmation() {
     },
   })
 
+  const handleDone = () => {
+    handleConfirmationClose()
+    handleAmountInBtc("")
+    handleAmountInCurrency("")
+    setTimeout(() => {
+      reset()
+    }, 500)
+  }
+
   return {
     isConfirmationOn,
     actionStatus: getActionStatus(status),
     handleConfirm,
-    handleConfirmationClose,
+    handleDone,
   }
 }

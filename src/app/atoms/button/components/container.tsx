@@ -46,7 +46,7 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`font-semibold text-sm text-white bg-primary transition-all rounded-lg text-center${
+          className={`font-semibold text-sm text-white bg-primary transition-all duration-500 rounded-lg text-center${
             customClass ? ` ${customClass}` : ""
           }${isDisabled ? " opacity-50 cursor-default" : " cursor-pointer"}`}
           onClick={onClick}
