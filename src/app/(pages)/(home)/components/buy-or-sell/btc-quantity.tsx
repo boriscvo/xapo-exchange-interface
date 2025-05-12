@@ -14,7 +14,7 @@ type Props = {
 export function BtcQuantity({ amountInBtc, onChange, onFocus }: Props) {
   const tradeState = useGlobalStore((state) => state.tradeState)
   return (
-    <div className="relative flex items-center w-full max-w-[22.5rem] mt-3 px-3">
+    <div className="relative flex items-center w-full max-w-[22.5rem] mt-3 sm:px-3">
       <EasyText isVisible={tradeState === "buy"}>
         <span className="absolute mr-4 -mt-3.5 text-lg">You get:</span>
       </EasyText>

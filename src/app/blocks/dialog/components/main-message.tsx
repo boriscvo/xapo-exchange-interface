@@ -19,9 +19,11 @@ export function MainMessage({
 }: Props) {
   return (
     <>
-      <h2 className="text-xl text-center font-semibold mb-4">{title}</h2>
-      <div className="mb-4">{content}</div>
-      <div className="flex gap-x-2">
+      <h2 className=" text-2xl sm:text-xl text-center font-semibold max-sm:mt-2 mb-6 sm:mb-4">
+        {title}
+      </h2>
+      <div className="mb-4 max-sm:text-lg">{content}</div>
+      <div className="flex gap-x-2 max-sm:mt-auto">
         <Button
           variant="secondary"
           customClass="w-1/2 h-10"

@@ -18,7 +18,7 @@ export function TransitionState({
 }: Props) {
   return (
     <div className="flex flex-col w-full items-center">
-      <div className="flex relative border-5 mt-5 border-dark rounded-full w-[4rem] h-[4rem] items-center justify-center">
+      <div className="flex relative border-5 mt-20 sm:mt-5 border-dark rounded-full w-[4rem] h-[4rem] items-center justify-center">
         <div
           className={`rotating-loading transition-all duration-300 ${
             status === "loading" ? "opacity-100" : "opacity-0"

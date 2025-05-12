@@ -25,7 +25,7 @@ export function BuyOrSell({ btcRate }: Props) {
     handlePayUpdates,
   } = useBuyOrSell(btcRate)
   return (
-    <div className="w-[50%] max-w-[22.5rem] mx-auto flex flex-col items-center">
+    <div className="w-full max-sm:h-full md:w-[50%] md:max-w-[22.5rem] mx-auto flex flex-col items-center">
       <Switch<ActivePurchaseState>
         activeState={activeState}
         options={{

@@ -4,7 +4,7 @@ type Props = {
 
 export function Container({ children }: Props) {
   return (
-    <div className="flex px-5 py-12 w-full h-[100vh] bg-dark text-white">
+    <div className="flex sm:px-5 sm:py-12 w-full h-[100vh] bg-dark text-white">
       {children}
     </div>
   )

@@ -16,7 +16,7 @@ export function Switch<T extends string>({
   const { option1, option2 } = options
   const isOption1 = activeState === option1.value
   return (
-    <div className="flex relative w-full border-2 border-white overflow-hidden items-center rounded-2xl">
+    <div className="flex relative w-full max-w-[22.5rem] mb-12 sm:mb-8 md:mb-4 border-2 border-white overflow-hidden items-center rounded-2xl">
       <button
         className={`switch-option-default ${
           isOption1 ? "text-dark" : "text-white"

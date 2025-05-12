@@ -21,7 +21,7 @@ export function MoneyAmount({
   const tradeState = useGlobalStore((state) => state.tradeState)
 
   return (
-    <div className="relative flex items-center w-full max-w-[22.5rem] mt-4 px-3">
+    <div className="relative flex items-center w-full max-w-[22.5rem] sm:px-3">
       <EasyText isVisible={tradeState === "buy"}>
         <span className="absolute mr-4 -mt-3.5 text-lg">You pay:</span>
       </EasyText>

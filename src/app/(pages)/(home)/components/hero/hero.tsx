@@ -7,12 +7,15 @@ type Props = {
 
 export function Hero({ btcRate }: Props) {
   return (
-    <div className="w-[50%] flex flex-col">
-      <h2 className="uppercase text-5xl mb-5">
-        BTC {"<>"} USD Exchange Interface
+    <div className="w-full md:w-[50%] flex flex-col">
+      <h2 className="mb-8 md:mb-5 max-sm:mt-4 uppercase text-3xl sm:text-5xl max-md:text-center">
+        BTC {"<>"} USD <br />
+        Exchange Interface
       </h2>
-      <CurrentPrice btcRate={btcRate} />
-      <CurrentMode />
+      <div className="max-md:flex flex-col text-center items-center">
+        <CurrentPrice btcRate={btcRate} />
+        <CurrentMode />
+      </div>
     </div>
   )
 }

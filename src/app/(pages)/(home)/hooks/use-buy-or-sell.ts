@@ -71,11 +71,15 @@ export function useBuyOrSell(btcRate: string) {
     handleStateUpdates(inputValue)
   }
   useEffect(() => {
-    if (isUserBackFromConfirmation) {
+    if (!isUserBackFromConfirmation) {
+      return
+    }
+    const timeoutId = setTimeout(() => {
       setUserBackFromConfirmation(false)
-      if (focusBackInputRef.current) {
-        focusBackInputRef.current.focus()
-      }
+      focusBackInputRef.current?.focus()
+    }, 400)
+    return () => {
+      clearTimeout(timeoutId)
     }
   }, [isUserBackFromConfirmation, setUserBackFromConfirmation])
 

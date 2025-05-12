@@ -46,7 +46,7 @@ export function TradeAction({
         isDisabled={!amountInCurrency || !amountInBtc}
         variant="primary"
         onClick={handleConfirmationOpen}
-        customClass="ml-auto mr-11 mt-3 px-3 py-2 w-[11rem]"
+        customClass="max-sm:mt-auto max-md:w-full ml-auto mr-11 sm:mt-8 md:mt-3 px-3 py-2 w-[11rem]"
         icon={<Coins size={16} className="mr-3 -ml-7" />}
       >
         <span>Proceed</span>

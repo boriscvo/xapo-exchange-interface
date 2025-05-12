@@ -12,10 +12,18 @@ export function TransitionMessage({
   successText,
 }: Props) {
   if (actionStatus === "loading") {
-    return <p className="mt-6 text-sm font-semibold">{loadingText}</p>
+    return (
+      <p className="mt-12 sm:mt-6 max-sm:px-10 max-sm:text-center text-lg sm:text-sm font-semibold">
+        {loadingText}
+      </p>
+    )
   }
   if (actionStatus === "success") {
-    return <p className="mt-6 text-sm font-semibold">{successText}</p>
+    return (
+      <p className="mt-12 sm:mt-6 max-sm:px-10 max-sm:text-center text-xl sm:text-sm font-semibold">
+        {successText}
+      </p>
+    )
   }
   return ""
 }
