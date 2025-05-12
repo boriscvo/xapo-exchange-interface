@@ -22,6 +22,7 @@ export function TradeConfirmation() {
       handleConfirm={handleConfirm}
       loadingText="Please wait until the transaction is placed..."
       successText="Transaction placed successfully!"
+      errorText="Oops, something went wrong. Please try later."
     />
   )
 }

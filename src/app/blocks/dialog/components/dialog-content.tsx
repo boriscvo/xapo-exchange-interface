@@ -5,6 +5,7 @@ type Props = {
   actionStatus?: ActionStatus
   successText?: string
   loadingText?: string
+  errorText?: string
   handleDone: () => void
   children: React.ReactNode
 }
@@ -13,15 +14,21 @@ export function DialogContent({
   actionStatus,
   successText,
   loadingText,
+  errorText,
   handleDone,
   children,
 }: Props) {
-  if (actionStatus === "loading" || actionStatus === "success") {
+  if (
+    actionStatus === "loading" ||
+    actionStatus === "success" ||
+    actionStatus === "error"
+  ) {
     return (
       <TransitionState
         status={actionStatus}
         loadingText={loadingText}
         successText={successText}
+        errorText={errorText}
         handleClose={handleDone}
       />
     )

@@ -7,6 +7,7 @@ type Props = {
   status: ActionStatus
   loadingText?: string
   successText?: string
+  errorText?: string
   handleClose: () => void
 }
 
@@ -14,6 +15,7 @@ export function TransitionState({
   status,
   loadingText,
   successText,
+  errorText,
   handleClose,
 }: Props) {
   return (
@@ -31,11 +33,17 @@ export function TransitionState({
             status === "success" && "checkmark-success-visible"
           }`}
         ></div>
+        <div
+          className={`x-error opacity-0 ${
+            status === "error" && "x-error-visible"
+          }`}
+        ></div>
       </div>
       <TransitionMessage
         actionStatus={status}
         loadingText={loadingText}
         successText={successText}
+        errorText={errorText}
       />
       <Button
         isDisabled={status === "loading"}

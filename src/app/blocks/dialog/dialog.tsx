@@ -12,6 +12,7 @@ type Props = {
   loadingText?: string
   successText?: string
   actionStatus?: ActionStatus
+  errorText?: string
   handleClose: () => void
   handleDone: () => void
   handleConfirm: () => void
@@ -26,6 +27,7 @@ export function Dialog({
   loadingText,
   successText,
   actionStatus,
+  errorText,
   handleClose,
   handleDone,
   handleConfirm,
@@ -41,6 +43,7 @@ export function Dialog({
           actionStatus={actionStatus}
           loadingText={loadingText}
           successText={successText}
+          errorText={errorText}
           handleDone={handleDone}
         >
           <MainMessage
