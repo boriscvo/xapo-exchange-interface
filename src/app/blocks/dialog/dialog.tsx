@@ -56,7 +56,14 @@ export function Dialog({
           />
         </DialogContent>
       </Container>
-      <Background isMountingOn={isMountingOn} onClose={handleClose} />
+      <Background
+        isMountingOn={isMountingOn}
+        onClose={
+          actionStatus === "error" || actionStatus === "success"
+            ? handleDone
+            : handleClose
+        }
+      />
     </>
   )
 }

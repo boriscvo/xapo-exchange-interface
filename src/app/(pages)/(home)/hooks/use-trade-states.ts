@@ -1,6 +1,5 @@
 import useGlobalStore from "@/app/store/use-global-store"
 import { ActivePurchaseState, ActivePurchaseType } from "@/app/types/trade-flow"
-import { useMemo } from "react"
 
 export function useTradeStates() {
   const tradeState = useGlobalStore((state) => state.tradeState)
@@ -16,13 +15,9 @@ export function useTradeStates() {
     setTradeType(value)
   }
 
-  const optionBuy = useMemo(() => {
-    return { label: "Buy", value: "buy" as ActivePurchaseState }
-  }, [])
+  const optionBuy = { label: "Buy", value: "buy" as ActivePurchaseState }
 
-  const optionSell = useMemo(() => {
-    return { label: "Sell", value: "sell" as ActivePurchaseState }
-  }, [])
+  const optionSell = { label: "Sell", value: "sell" as ActivePurchaseState }
 
   return {
     activeState: tradeState,
