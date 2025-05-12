@@ -21,7 +21,9 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`cursor-pointer w-8 h-8 bg-softWhite transition-all p-1 text-center rounded-full shadow`}
+          className={`cursor-pointer select-none bg-white transition-all p-1 text-center rounded-full shadow-sm border-1 border-primary ${
+            customClass ? ` ${customClass}` : ""
+          }`}
           onClick={onClick}
         >
           {children}
@@ -32,7 +34,7 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`font-semibold text-sm bg-btnGray transition-all rounded-xl text-center${
+          className={`font-semibold bg-btnGray transition-all rounded-xl text-center${
             customClass ? ` ${customClass}` : ""
           }${isDisabled ? " opacity-50 cursor-default" : " cursor-pointer"}`}
           onClick={onClick}
@@ -46,9 +48,13 @@ export function Container({
         <button
           disabled={isDisabled}
           autoFocus={isAutoFocused}
-          className={`font-semibold text-sm text-white bg-primary transition-all duration-500 rounded-lg text-center${
+          className={`flex items-center text-center justify-center font-semibold select-none text-white bg-primary hover:bg-primaryHover transition-all duration-500 rounded-lg text-center${
             customClass ? ` ${customClass}` : ""
-          }${isDisabled ? " opacity-50 cursor-default" : " cursor-pointer"}`}
+          }${
+            isDisabled
+              ? " opacity-50 cursor-default pointer-events-none"
+              : " cursor-pointer"
+          }`}
           onClick={onClick}
         >
           {children}

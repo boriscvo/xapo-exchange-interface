@@ -1,7 +1,11 @@
-import { Numeral } from "@/app/atoms/numeral/"
 import { fetchBtcPrice } from "@/app/http/fetch-btc-price"
-import { BuyOrSell, Container, TradeLayout } from "./components"
-import { TradeConfirmation } from "./components/trade-confirmation/trade-confirmation"
+import {
+  BuyOrSell,
+  Container,
+  TradeLayout,
+  Hero,
+  TradeConfirmation,
+} from "./components"
 
 export default async function Home() {
   const btcRate = await fetchBtcPrice()
@@ -9,13 +13,7 @@ export default async function Home() {
     <>
       <Container>
         <TradeLayout>
-          Home
-          <Numeral
-            numberValue={btcRate.price}
-            format="round-with-decimals"
-            decimals={2}
-            trailSymbol="USD"
-          />
+          <Hero btcRate={btcRate.price} />
           <BuyOrSell btcRate={btcRate.price} />
         </TradeLayout>
       </Container>

@@ -13,6 +13,8 @@ export type BtcTradeFlowSlice = {
   isConfirmationOn: boolean
   setConfirmationOpen: () => void
   setConfirmationClose: () => void
+  isUserBackFromConfirmation: boolean
+  setUserBackFromConfirmation: (value: boolean) => void
 }
 
 export const btcTradeFlowSlice: StateCreator<BtcTradeFlowSlice> = (set) => ({
@@ -21,6 +23,7 @@ export const btcTradeFlowSlice: StateCreator<BtcTradeFlowSlice> = (set) => ({
   isConfirmationOn: false,
   amountInBtc: "",
   amountInCurrency: "",
+  isUserBackFromConfirmation: false,
   setConfirmationOpen: () => {
     set(() => ({
       isConfirmationOn: true,
@@ -49,6 +52,11 @@ export const btcTradeFlowSlice: StateCreator<BtcTradeFlowSlice> = (set) => ({
   setTradeState: (state: ActivePurchaseState) => {
     set(() => ({
       tradeState: state,
+    }))
+  },
+  setUserBackFromConfirmation: (value: boolean) => {
+    set(() => ({
+      isUserBackFromConfirmation: value,
     }))
   },
 })

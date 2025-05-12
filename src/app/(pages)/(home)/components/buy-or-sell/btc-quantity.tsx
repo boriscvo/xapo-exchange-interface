@@ -1,31 +1,33 @@
+"use client"
+import { EasyText } from "@/app/atoms/easy-text"
 import { Input } from "@/app/atoms/input"
 import useGlobalStore from "@/app/store/use-global-store"
+import { ActivePurchaseType } from "@/app/types/trade-flow"
+import { Bitcoin } from "lucide-react"
 
 type Props = {
   amountInBtc: string
-  activeType: "in-currency" | "in-btc"
-  handlePayUpdates: (value: string) => void
+  onChange: (value: string) => void
+  onFocus: (value: ActivePurchaseType) => void
 }
 
-export function BtcQuantity({
-  amountInBtc,
-  activeType,
-  handlePayUpdates,
-}: Props) {
+export function BtcQuantity({ amountInBtc, onChange, onFocus }: Props) {
   const tradeState = useGlobalStore((state) => state.tradeState)
   return (
-    <div className="flex mt-4">
-      {tradeState === "buy" ? (
-        <span className="mr-4">You get:</span>
-      ) : (
-        <span className="mr-4">By selling:</span>
-      )}
+    <div className="relative flex items-center w-full max-w-[22.5rem] mt-3 px-3">
+      <EasyText isVisible={tradeState === "buy"}>
+        <span className="absolute mr-4 -mt-3.5 text-lg">You get:</span>
+      </EasyText>
+      <EasyText isVisible={tradeState === "sell"}>
+        <span className="absolute mr-4 -mt-3.5 text-lg">By selling:</span>
+      </EasyText>
       <Input
         value={amountInBtc}
-        onChange={handlePayUpdates}
-        isDisabled={activeType === "in-currency"}
+        customClass="w-[11rem] ml-auto"
+        onChange={onChange}
+        onFocus={() => onFocus("in-btc")}
       />
-      <span className="ml-2">BTC</span>
+      <Bitcoin className="ml-2" />
     </div>
   )
 }

@@ -1,33 +1,42 @@
 "use client"
+import { EasyText } from "@/app/atoms/easy-text"
 import { Input } from "@/app/atoms/input"
 import useGlobalStore from "@/app/store/use-global-store"
+import { ActivePurchaseType } from "@/app/types/trade-flow"
+import { DollarSignIcon } from "lucide-react"
 
 type Props = {
+  ref: React.RefObject<HTMLInputElement | null>
   amountInCurrency: string
-  activeType: "in-currency" | "in-btc"
-  handlePayUpdates: (value: string) => void
+  onChange: (value: string) => void
+  onFocus: (value: ActivePurchaseType) => void
 }
 
 export function MoneyAmount({
+  ref,
   amountInCurrency,
-  activeType,
-  handlePayUpdates,
+  onChange,
+  onFocus,
 }: Props) {
   const tradeState = useGlobalStore((state) => state.tradeState)
+
   return (
-    <div className="flex mt-4">
-      {tradeState === "buy" ? (
-        <span className="mr-4">You pay:</span>
-      ) : (
-        <span className="mr-4">You receive:</span>
-      )}
+    <div className="relative flex items-center w-full max-w-[22.5rem] mt-4 px-3">
+      <EasyText isVisible={tradeState === "buy"}>
+        <span className="absolute mr-4 -mt-3.5 text-lg">You pay:</span>
+      </EasyText>
+      <EasyText isVisible={tradeState === "sell"}>
+        <span className="absolute mr-4 -mt-3.5 text-lg">You receive:</span>
+      </EasyText>
       <Input
+        ref={ref}
         value={amountInCurrency}
-        onChange={handlePayUpdates}
-        isDisabled={activeType === "in-btc"}
+        customClass="w-[11rem] ml-auto"
         isAutoFocus
+        onFocus={() => onFocus("in-currency")}
+        onChange={onChange}
       />
-      <span className="ml-2">USD</span>
+      <DollarSignIcon className="ml-2" />
     </div>
   )
 }

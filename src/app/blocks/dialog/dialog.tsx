@@ -13,6 +13,7 @@ type Props = {
   successText?: string
   actionStatus?: ActionStatus
   handleClose: () => void
+  handleDone: () => void
   handleConfirm: () => void
 }
 
@@ -26,6 +27,7 @@ export function Dialog({
   successText,
   actionStatus,
   handleClose,
+  handleDone,
   handleConfirm,
 }: Props) {
   const { isMountingOn, isDialogMounted } = useDialogVisibility(isOpen)
@@ -39,7 +41,7 @@ export function Dialog({
           actionStatus={actionStatus}
           loadingText={loadingText}
           successText={successText}
-          handleClose={handleClose}
+          handleDone={handleDone}
         >
           <MainMessage
             title={title}

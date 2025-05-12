@@ -9,14 +9,12 @@ export function Numeral({
 }: NumeralType) {
   return (
     <Container>
-      <span className="flex items-baseline">
-        <FormattedNumber
-          numberValue={numberValue}
-          format={format}
-          decimals={decimals}
-        />
-        {trailSymbol ? ` ${trailSymbol}` : ""}
-      </span>
+      <FormattedNumber
+        numberValue={numberValue}
+        format={format}
+        decimals={decimals}
+      />
+      {trailSymbol ? ` ${trailSymbol}` : ""}
     </Container>
   )
 }

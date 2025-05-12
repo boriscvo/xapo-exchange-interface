@@ -7,18 +7,18 @@ export function Description() {
   const tradeState = useGlobalStore((state) => state.tradeState)
 
   const Proceed = () => (
-    <p className="mt-3">Are you sure you want to proceed?</p>
+    <div className="mt-3">Are you sure you want to proceed?</div>
   )
 
   if (tradeState === "buy" && tradeType === "in-currency") {
     return (
       <>
-        <p className="leading-6">
+        <div className="leading-6">
           You are about to{" "}
           <span className="font-semibold">buy {amountInCurrency} USD</span>{" "}
           worth of bitcoin, which accounts for{" "}
           <span className=" font-semibold">{amountInBtc} BTC</span>.
-        </p>
+        </div>
         <Proceed />
       </>
     )
@@ -26,12 +26,12 @@ export function Description() {
   if (tradeState === "buy" && tradeType === "in-btc") {
     return (
       <>
-        <p className="leading-5.5">
+        <div className="leading-5.5">
           You are about to{" "}
           <span className="font-semibold">buy {amountInBtc} BTC</span> which
           costs around{" "}
           <span className=" font-semibold">{amountInCurrency} USD</span>.
-        </p>
+        </div>
         <Proceed />
       </>
     )
@@ -39,12 +39,12 @@ export function Description() {
   if (tradeState === "sell" && tradeType === "in-currency") {
     return (
       <>
-        <p className="leading-5.5">
+        <div className="leading-5.5">
           You are about to{" "}
           <span className="font-semibold">sell {amountInCurrency} USD</span>{" "}
-          worth of bitcoins, which is around
+          worth of bitcoins, which is around{" "}
           <span className=" font-semibold">{amountInBtc} BTC</span>.
-        </p>
+        </div>
         <Proceed />
       </>
     )

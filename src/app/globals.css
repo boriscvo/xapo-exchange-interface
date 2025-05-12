@@ -3,6 +3,7 @@
 @theme {
   --color-*: initial;
   --color-primary: #c34813;
+  --color-primaryHover: #ff550c;
   --color-dark: #090402;
   --color-positive: #21c313;
   --color-negative: #c31313;

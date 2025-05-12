@@ -15,6 +15,9 @@ export function useTradeConfirmation() {
   const handleConfirmationClose = useGlobalStore(
     (state) => state.setConfirmationClose
   )
+  const handleBsckFromConfirmation = useGlobalStore(
+    (state) => state.setUserBackFromConfirmation
+  )
 
   const {
     status,
@@ -47,10 +50,16 @@ export function useTradeConfirmation() {
     }, 500)
   }
 
+  const handleClose = () => {
+    handleConfirmationClose()
+    handleBsckFromConfirmation(true)
+  }
+
   return {
     isConfirmationOn,
     actionStatus: getActionStatus(status),
     handleConfirm,
     handleDone,
+    handleClose,
   }
 }

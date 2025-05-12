@@ -2,6 +2,10 @@ import { getCleanNumber } from "@/app/utils/get-clean-number"
 import { getFormattedValue } from "@/app/utils/get-formatted-number"
 import { useTradeStates } from "./use-trade-states"
 import useGlobalStore from "@/app/store/use-global-store"
+import { useEffect, useRef } from "react"
+
+const MaxMoneyDecimalLength = 2
+const MaxBtcDecimalLength = 5
 
 export function useBuyOrSell(btcRate: string) {
   const {
@@ -13,12 +17,20 @@ export function useBuyOrSell(btcRate: string) {
     handleTypeChange,
   } = useTradeStates()
 
+  const focusBackInputRef = useRef<HTMLInputElement>(null)
+
   const amountInCurrency = useGlobalStore((state) => state.amountInCurrency)
   const amountInBtc = useGlobalStore((state) => state.amountInBtc)
   const setAmountInCurrency = useGlobalStore(
     (state) => state.setAmountInCurrency
   )
   const setAmountInBtc = useGlobalStore((state) => state.setAmountInBtc)
+  const isUserBackFromConfirmation = useGlobalStore(
+    (state) => state.isUserBackFromConfirmation
+  )
+  const setUserBackFromConfirmation = useGlobalStore(
+    (state) => state.setUserBackFromConfirmation
+  )
 
   const handleStateUpdates = (value?: string) => {
     if (value === undefined) {
@@ -36,7 +48,7 @@ export function useBuyOrSell(btcRate: string) {
       2
     )
     setAmountInCurrency(getFormattedValue(convertedCurrency))
-    setAmountInBtc(value)
+    setAmountInBtc(getFormattedValue(value))
   }
 
   const handlePayUpdates = (inputValue: string) => {
@@ -48,11 +60,24 @@ export function useBuyOrSell(btcRate: string) {
     if (isNaN(Number(value)) || (Number(value) < 0 && value.length > 0)) {
       return
     }
-    if (inputValue.split(".")[1]?.length > 2) {
+    if (
+      inputValue.split(".")[1]?.length >
+      (activeType === "in-currency"
+        ? MaxMoneyDecimalLength
+        : MaxBtcDecimalLength)
+    ) {
       return
     }
     handleStateUpdates(inputValue)
   }
+  useEffect(() => {
+    if (isUserBackFromConfirmation) {
+      setUserBackFromConfirmation(false)
+      if (focusBackInputRef.current) {
+        focusBackInputRef.current.focus()
+      }
+    }
+  }, [isUserBackFromConfirmation, setUserBackFromConfirmation])
 
   return {
     activeState,
@@ -61,6 +86,7 @@ export function useBuyOrSell(btcRate: string) {
     optionSell,
     amountInCurrency,
     amountInBtc,
+    focusBackInputRef,
     handleStateChange,
     handleTypeChange,
     handlePayUpdates,

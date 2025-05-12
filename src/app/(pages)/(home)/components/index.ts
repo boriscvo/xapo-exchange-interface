@@ -1,3 +1,5 @@
 export { TradeLayout } from "./trade-layout"
 export { Container } from "./container"
 export { BuyOrSell } from "./buy-or-sell/buy-or-sell"
+export { TradeConfirmation } from "./trade-confirmation/trade-confirmation"
+export { Hero } from "./hero/hero"
