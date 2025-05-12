@@ -25,6 +25,7 @@ The app is running on [http://localhost:3000](http://localhost:3000).
 - The app has options to select sides - buy or sell - then it has two dependent inputs, money and BTC quantity. Both could be used to calculate the other one. It has a confirmation dialog with appropriate state handling. The app is elementary responsive, but I haven't spent too much time on it.
 - There are two calls in the app. One of them is a server side fetching of BTC price from api.binance.com. The second one is a fictional submit call, which response is mocked using MSW, in order to showcase success and loading states.
 - The app is made to be scallable and extendable with any other library or analytics integration.
+- For CSS I mostly relied on Tailwind, but I also used some custom CSS.
 
 ## What is missing from being fully rounded
 
