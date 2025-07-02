@@ -1,4 +1,4 @@
-import useGlobalStore from "@/app/store/use-global-store"
+import useGlobalStore from "@/store/use-global-store"
 import { ContentMessage } from "./content-message"
 
 export function Description() {

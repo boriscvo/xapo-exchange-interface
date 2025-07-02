@@ -1,8 +1,8 @@
 "use client"
-import useGlobalStore from "@/app/store/use-global-store"
+import useGlobalStore from "@/store/use-global-store"
 import { Switch } from "@/app/atoms/switch"
+import { ActivePurchaseState } from "@/types/trade-flow"
 import { useBuyOrSell } from "../../hooks/use-buy-or-sell"
-import { ActivePurchaseState } from "@/app/types/trade-flow"
 import { TradeAction } from "./trade-action"
 
 type Props = {

@@ -1,8 +1,8 @@
 "use client"
+import useGlobalStore from "@/store/use-global-store"
+import { ActivePurchaseType } from "@/types/trade-flow"
 import { EasyText } from "@/app/atoms/easy-text"
 import { Input } from "@/app/atoms/input"
-import useGlobalStore from "@/app/store/use-global-store"
-import { ActivePurchaseType } from "@/app/types/trade-flow"
 import { DollarSignIcon } from "lucide-react"
 
 type Props = {

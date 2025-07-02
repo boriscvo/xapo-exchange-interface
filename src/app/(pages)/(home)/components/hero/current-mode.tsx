@@ -1,6 +1,6 @@
 "use client"
 
-import useGlobalStore from "@/app/store/use-global-store"
+import useGlobalStore from "@/store/use-global-store"
 
 export function CurrentMode() {
   const tradeState = useGlobalStore((state) => state.tradeState)

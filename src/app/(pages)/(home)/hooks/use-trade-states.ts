@@ -1,5 +1,5 @@
-import useGlobalStore from "@/app/store/use-global-store"
-import { ActivePurchaseState, ActivePurchaseType } from "@/app/types/trade-flow"
+import useGlobalStore from "@/store/use-global-store"
+import { ActivePurchaseState, ActivePurchaseType } from "@/types/trade-flow"
 
 export function useTradeStates() {
   const tradeState = useGlobalStore((state) => state.tradeState)

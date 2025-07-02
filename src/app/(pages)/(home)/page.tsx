@@ -1,4 +1,4 @@
-import { fetchBtcPrice } from "@/app/http/fetch-btc-price"
+import { fetchBtcPrice } from "@/http/fetch-btc-price"
 import {
   BuyOrSell,
   Container,

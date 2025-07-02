@@ -1,5 +1,5 @@
-import useGlobalStore from "@/app/store/use-global-store"
-import { getActionStatus } from "@/app/utils/get-action-state"
+import useGlobalStore from "@/store/use-global-store"
+import { getActionStatus } from "@/utils/get-action-state"
 import { useMutation } from "@tanstack/react-query"
 
 export function useTradeConfirmation() {

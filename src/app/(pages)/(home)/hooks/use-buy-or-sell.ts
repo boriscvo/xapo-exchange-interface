@@ -1,7 +1,7 @@
-import { getCleanNumber } from "@/app/utils/get-clean-number"
-import { getFormattedValue } from "@/app/utils/get-formatted-number"
+import { getCleanNumber } from "@/utils/get-clean-number"
+import { getFormattedValue } from "@/utils/get-formatted-number"
 import { useTradeStates } from "./use-trade-states"
-import useGlobalStore from "@/app/store/use-global-store"
+import useGlobalStore from "@/store/use-global-store"
 import { useEffect, useRef } from "react"
 
 const MaxMoneyDecimalLength = 2

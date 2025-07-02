@@ -1,7 +1,7 @@
 "use client"
 import { Dialog } from "@/app/blocks/dialog/"
-import { useTradeConfirmation } from "../../hooks/use-trade-confirmation"
 import { Description } from "./description"
+import { useTradeConfirmation } from "../../hooks/use-trade-confirmation"
 
 export function TradeConfirmation() {
   const {

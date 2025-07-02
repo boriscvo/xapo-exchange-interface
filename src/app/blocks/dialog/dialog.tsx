@@ -1,7 +1,7 @@
 "use client"
 import { Background, Container, DialogContent, MainMessage } from "./components"
 import { useDialogVisibility } from "./hooks/use-dialog-visibility"
-import { ActionStatus } from "@/app/types/action-status"
+import { ActionStatus } from "@/types/action-status"
 
 type Props = {
   isOpen: boolean

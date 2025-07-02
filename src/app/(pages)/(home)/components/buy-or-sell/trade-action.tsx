@@ -1,9 +1,9 @@
+import { Coins } from "lucide-react"
+import { useEffect, useState } from "react"
+import { ActivePurchaseType } from "@/types/trade-flow"
 import { Button } from "@/app/atoms/button"
 import { BtcQuantity } from "./btc-quantity"
 import { MoneyAmount } from "./money-amount"
-import { Coins } from "lucide-react"
-import { ActivePurchaseType } from "@/app/types/trade-flow"
-import { useEffect, useState } from "react"
 
 type Props = {
   focusBackInputRef: React.RefObject<HTMLInputElement | null>
