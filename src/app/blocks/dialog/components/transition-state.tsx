@@ -1,5 +1,5 @@
 import { Button } from "@/app/atoms/button"
-import { ActionStatus } from "@/app/types/action-status"
+import { ActionStatus } from "@/types/action-status"
 import { TransitionMessage } from "./transition-message"
 import "../dialog.css"
 
