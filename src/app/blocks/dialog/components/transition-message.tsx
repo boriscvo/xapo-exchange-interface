@@ -1,4 +1,4 @@
-import { ActionStatus } from "@/app/types/action-status"
+import { ActionStatus } from "@/types/action-status"
 
 type Props = {
   actionStatus: ActionStatus

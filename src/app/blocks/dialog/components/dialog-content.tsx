@@ -1,4 +1,4 @@
-import { ActionStatus } from "@/app/types/action-status"
+import { ActionStatus } from "@/types/action-status"
 import { TransitionState } from "./transition-state"
 
 type Props = {
